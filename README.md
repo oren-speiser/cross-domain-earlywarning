@@ -6,7 +6,7 @@ bearing. In each case it watches a *health margin* erode toward a failure level,
 projects the *time-to-exhaustion*, and raises a latched early warning **before** the
 system fails.
 
-**Live demo:** `https://<username>.github.io/<repo>/`  (interactive: pick a machine, press play)
+**Live demo:** **Live demo:** `https://oren-speiser.github.io/cross-domain-earlywarning/`(interactive: pick a machine, press play)
 
 The point is not any one domain. It is that the same simple law (margin / rate /
 time-to-exhaustion) gives reliable advance warning across **thermodynamic**,
