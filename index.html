@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>One Detector, Three Machines — Failure Called Early</title>
+<title>One Detector, Three Machines: Failure Called Early</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -98,10 +98,10 @@
     </div>
     <div class="plot"><canvas id="cv"></canvas></div>
     <div class="readouts">
-      <div class="ro"><div class="k">Reading</div><div class="v" id="r-cycle">—</div></div>
-      <div class="ro"><div class="k">Health margin</div><div class="v" id="r-margin">—</div></div>
-      <div class="ro"><div class="k">Projected time to failure</div><div class="v" id="r-ttx">—</div></div>
-      <div class="ro"><div class="k">Advance warning</div><div class="v" id="r-lead">—</div></div>
+      <div class="ro"><div class="k">Reading</div><div class="v" id="r-cycle">–</div></div>
+      <div class="ro"><div class="k">Health margin</div><div class="v" id="r-margin">–</div></div>
+      <div class="ro"><div class="k">Projected time to failure</div><div class="v" id="r-ttx">–</div></div>
+      <div class="ro"><div class="k">Advance warning</div><div class="v" id="r-lead">–</div></div>
     </div>
     <div class="controls">
       <button class="playbtn" id="play" aria-label="Play"></button>
@@ -189,9 +189,9 @@ function setStatus(){
   document.getElementById('r-cycle').textContent=ci+' / '+(cur.life-1);
   document.getElementById('r-margin').textContent=cur.margin[Math.min(ci,cur.fail)].toFixed(2);
   const t=cur.ttx[Math.min(ci,cur.fail)];
-  document.getElementById('r-ttx').textContent=(w!==null&&ci>=w)?(ci>=f?'0':fmtTtx(t)):'—';
+  document.getElementById('r-ttx').textContent=(w!==null&&ci>=w)?(ci>=f?'0':fmtTtx(t)):'–';
   const rl=document.getElementById('r-lead');
-  if(w===null||ci<w){rl.textContent='—';rl.style.color=C.txt;}
+  if(w===null||ci<w){rl.textContent='–';rl.style.color=C.txt;}
   else if(ci<f){rl.textContent=fmtLead(lead);rl.style.color=C.amber;}
   else{rl.textContent=fmtLead(lead);rl.style.color=C.teal;}
   document.getElementById('scrub').value=Math.round(cyc/(cur.life-1)*100);
