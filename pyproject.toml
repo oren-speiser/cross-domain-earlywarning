@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cross-domain-earlywarning"
+version = "1.0.0"
+description = "One transparent early-warning detector (margin / rate / time-to-exhaustion) validated on a jet engine, a Li-ion battery, and a bearing."
+authors = [{name = "Oren A. L. Speiser", email = "orensp77@gmail.com"}]
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = ["numpy", "scipy"]
+
+[project.urls]
+Homepage = "https://oren-speiser.github.io/cross-domain-earlywarning/"
+Hub = "https://oren-speiser.github.io/stability-diagnostics/"
+
+[tool.setuptools]
+py-modules = ["detector", "battery", "bearing", "engine"]
