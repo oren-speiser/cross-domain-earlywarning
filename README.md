@@ -6,12 +6,26 @@ bearing. In each case it watches a *health margin* erode toward a failure level,
 projects the *time-to-exhaustion*, and raises a latched early warning **before** the
 system fails.
 
-**Live demo:** `https://oren-speiser.github.io/cross-domain-earlywarning/`(interactive: pick a machine, press play)
+**Live demo:** `https://oren-speiser.github.io/cross-domain-earlywarning/` (interactive: pick a machine, press play)
 
 The point is not any one domain. It is that the same simple law (margin / rate /
 time-to-exhaustion) gives reliable advance warning across **thermodynamic**,
 **electrochemical**, and **mechanical** failure, covering both gradual degradation
 (engine, battery) and abrupt collapse (bearing).
+
+## Run it in two lines
+
+```bash
+pip install "git+https://github.com/oren-speiser/cross-domain-earlywarning"
+python -m battery
+```
+
+Installs the shared detector and reproduces the real-measured battery result end to end:
+downloads the NASA Li-ion aging data and prints, for each cell, the cycle where the
+warning fired, the cycle where the cell reached end-of-life, and the lead between them
+(B0005: 18, B0006: 42, B0018: 30 cycles of advance warning). The detector itself is then
+importable as `import detector`. The engine and bearing pipelines need two extra
+libraries (matplotlib, pandas); run them from a clone as shown under Reproduce.
 
 ## Results
 
@@ -52,6 +66,15 @@ raw sensors, and the smoothing windows, scaled to each domain's sampling interva
 
 ## Reproduce
 
+Installed package (battery, no clone needed):
+
+```bash
+pip install "git+https://github.com/oren-speiser/cross-domain-earlywarning"
+python -m battery
+```
+
+From a clone (all three domains + rebuilding the demo):
+
 ```bash
 pip install -r requirements.txt
 python engine.py     # downloads C-MAPSS FD001, prints stats, writes engine.json + figure
@@ -84,11 +107,12 @@ engine.py         turbofan pipeline   (download -> margin -> detect -> engine.js
 battery.py        battery pipeline
 bearing.py        bearing pipeline
 build.py          assembles index.html from the processed data
+pyproject.toml    makes the repo pip-installable (numpy + scipy)
 engine.json       processed series used by the demo
 battery.json      processed series used by the demo
 bearing.json      processed series used by the demo
 turbofan_ttx.png  result figure
-requirements.txt  Python dependencies
+requirements.txt  Python dependencies for the full clone workflow
 ```
 
 ## Author
